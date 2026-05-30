@@ -4,7 +4,7 @@ Prueba: **DESARROLLADOR JR**
 
 Deadline: **1 día**
 
-Nombre: 
+Nombre: Jesus Alejandro Juarez Hernandez
 
 ---
 
@@ -146,3 +146,67 @@ Trabaja en SQL Server y realiza las siguientes consultas basadas en la tabla `cc
 ---
 
 Este examen evalúa tu capacidad para desarrollar APIs RESTful, realizar consultas avanzadas en SQL Server y generar reportes en formato CSV. Se valorará la organización del código, las mejores prácticas y cualquier documentación adicional que proporciones.
+
+
+Proyecto API .NET 8 + SQL Server
+
+Este proyecto consiste en una API desarrollada en .NET 8 conectada a SQL Server en contenedor Docker, que permite consultar datos y generar un archivo CSV.
+
+1. Levantar contenedor de SQL Server
+
+Asegúrate de tener Docker instalado.
+
+Ejecuta el siguiente comando:
+
+docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=YourStrong!Passw0rd" \
+-p 1433:1433 --name sqlserver \
+-d mcr.microsoft.com/mssql/server:2022-latest
+
+Credenciales:
+
+Server: localhost,1433
+User: sa
+Password: YourStrong!Passw0rd
+
+2. Crear base de datos
+Abrir SQL Server Management Studio (SSMS) o Azure Data Studio
+Conectarse a:
+Server: localhost,1433
+User: sa
+Password: YourStrong!Passw0rd
+Abrir el archivo:
+/sql/database.sql
+Ejecutarlo completo
+
+Esto creará:
+
+Base de datos
+Tablas
+Procedimientos almacenados
+
+3. Configurar conexión de la API
+
+En el archivo:
+
+appsettings.json
+
+Configurar la cadena de conexión:
+
+"ConnectionStrings": {
+  "DefaultConnection": "Server=localhost,1433;Database=TuBaseDeDatos;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True"
+}
+
+4. Ejecutar la API
+
+Desde la terminal en la raíz del proyecto:
+
+dotnet restore
+dotnet build
+dotnet run
+
+Ejecutar pruebas unitarias
+dotnet test
+
+Asegúrate de que Docker esté corriendo antes de ejecutar la API
+El puerto 1433 debe estar libre
+Usa Postman o Swagger para probar endpoints
